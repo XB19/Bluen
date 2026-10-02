@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: bluen-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/bluen}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 12MB
+  mail:
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+server:
+  port: ${PORT:8080}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-me-bluen-dev-secret-key-at-least-32-bytes-long}
+    expiration-hours: 12
+  admin:
+    username: ${ADMIN_USERNAME:admin}
+    email: ${ADMIN_EMAIL:admin@bluen.tg}
+    password: ${ADMIN_PASSWORD:Bluen@2026}
+  uploads-dir: ${UPLOADS_DIR:uploads}
+  private-dir: ${PRIVATE_DIR:uploads-private}
+  notifications:
+    destinataire: ${NOTIFICATION_EMAIL:contact@bluen.tg}
+    expediteur: ${MAIL_FROM:contact@bluen.tg}
+  cors-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:4173}
